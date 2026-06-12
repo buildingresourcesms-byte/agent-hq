@@ -1,9 +1,8 @@
 import { useMemo, useState } from 'react'
-import QRCode from 'react-qr-code'
 import { DoorOpen, UserPlus, Check, ArrowLeft, Sparkles, Phone, Users } from 'lucide-react'
 import { useApp } from '../store.jsx'
 import { money, fmtDateFull } from '../data.js'
-import { PageHeader, Card, Btn, Field, inputCls, EmptyState, Toggle, cx } from '../ui.jsx'
+import { PageHeader, Card, Btn, Field, inputCls, EmptyState, Toggle, BrandedQR, cx } from '../ui.jsx'
 
 /* visitor-facing sign-in sheet (what sits on the kitchen counter) */
 function SignInKiosk({ listing, onBack }) {
@@ -120,9 +119,7 @@ export default function OpenHouse({ initialId }) {
       <div className="grid gap-4 lg:grid-cols-[20rem_1fr]">
         {/* the kit */}
         <Card title="The sign-in QR" sub="Print it, prop it by the cookies.">
-          <div className="rounded-xl bg-white p-4 ring-1 ring-slate-200 dark:ring-white/20">
-            <QRCode value={`https://${signInUrl}`} className="h-auto w-full" style={{ maxWidth: '100%' }} />
-          </div>
+          <BrandedQR value={`https://${signInUrl}`} />
           <p className="mt-2 text-center text-[11px] text-slate-400 tabular-nums">{signInUrl}</p>
           {listing.openHouse && (
             <p className="mt-3 rounded-lg bg-gold-50 px-3 py-2 text-center text-xs font-medium text-gold-800 ring-1 ring-inset ring-gold-600/20 dark:bg-gold-500/10 dark:text-gold-200">

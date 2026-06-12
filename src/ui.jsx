@@ -1,3 +1,4 @@
+import QRCode from 'react-qr-code'
 import { Search, ChevronDown, X, ArrowRight } from 'lucide-react'
 import { STAGE_STYLES, LISTING_STYLES, PRIORITY_STYLES, FINANCING_KINDS } from './data.js'
 
@@ -22,6 +23,31 @@ export function BrandMark({ className = 'w-10 h-10' }) {
       </text>
       <rect x="13" y="35" width="22" height="2.5" rx="1.25" fill="var(--color-gold-400, #d4a437)" />
     </svg>
+  )
+}
+
+/* ---------- branded QR ----------
+   react-qr-code at error-correction H (tolerates the center logo),
+   forest-ink modules, white quiet-zone behind a centered HQ badge,
+   wrapped in a soft brand frame. */
+export function BrandedQR({ value, className }) {
+  return (
+    <div className={cx('relative mx-auto overflow-hidden rounded-2xl bg-white p-4 ring-1 ring-slate-200 shadow-[0_10px_30px_-14px_rgba(17,36,28,0.3)] dark:ring-white/20', className)}>
+      {/* gold corner ticks for a finished, printable look */}
+      <span className="pointer-events-none absolute left-2.5 top-2.5 h-4 w-4 rounded-tl-md border-l-2 border-t-2 border-gold-400" />
+      <span className="pointer-events-none absolute right-2.5 top-2.5 h-4 w-4 rounded-tr-md border-r-2 border-t-2 border-gold-400" />
+      <span className="pointer-events-none absolute bottom-2.5 left-2.5 h-4 w-4 rounded-bl-md border-b-2 border-l-2 border-gold-400" />
+      <span className="pointer-events-none absolute bottom-2.5 right-2.5 h-4 w-4 rounded-br-md border-b-2 border-r-2 border-gold-400" />
+      <div className="relative">
+        <QRCode value={value} level="H" fgColor="#11241c" bgColor="#ffffff" className="h-auto w-full" style={{ maxWidth: '100%' }} />
+        <span
+          className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rounded-[22%] bg-white p-[3%] shadow-[0_1px_4px_rgba(17,36,28,0.18)]"
+          style={{ width: '27%', height: '27%' }}
+        >
+          <BrandMark className="h-full w-full" />
+        </span>
+      </div>
+    </div>
   )
 }
 

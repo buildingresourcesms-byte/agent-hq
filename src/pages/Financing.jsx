@@ -1,5 +1,4 @@
 import { useMemo, useState } from 'react'
-import QRCode from 'react-qr-code'
 import {
   Landmark,
   Link2,
@@ -17,7 +16,7 @@ import {
 } from 'lucide-react'
 import { useApp } from '../store.jsx'
 import { LOAN_STAGES, loanStageIndex, coBrandedLink, money, fmtDate, relDate } from '../data.js'
-import { PageHeader, Card, Btn, Badge, Field, Select, inputCls, ProgressBar, EmptyState, FinancingBadge, cx } from '../ui.jsx'
+import { PageHeader, Card, Btn, Badge, Field, Select, inputCls, ProgressBar, EmptyState, FinancingBadge, BrandedQR, cx } from '../ui.jsx'
 
 /* ---------- one-tap referral (from the hub) ---------- */
 function ReferCard() {
@@ -269,9 +268,7 @@ function LinkedHub() {
 
           {/* co-branded apply link */}
           <Card title="Co-branded apply link" sub="Your name on her application.">
-            <div className="rounded-xl bg-white p-3 ring-1 ring-slate-200 dark:ring-white/20">
-              <QRCode value={`https://${link}`} className="h-auto w-full" style={{ maxWidth: '100%' }} />
-            </div>
+            <BrandedQR value={`https://${link}`} />
             <div className="mt-2 flex items-center gap-2">
               <code className="min-w-0 flex-1 truncate rounded-lg bg-slate-50 px-2.5 py-1.5 text-[11px] text-slate-600 dark:bg-white/5 dark:text-slate-300">{link}</code>
               <Btn
