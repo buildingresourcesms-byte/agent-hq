@@ -1,0 +1,292 @@
+@import "tailwindcss";
+
+/* class-based dark mode (toggled on <html>) */
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Inter", ui-sans-serif, system-ui, sans-serif;
+
+  /* Deep evergreen — AgentHQ's chrome & ink */
+  --color-forest-50: #f2f7f4;
+  --color-forest-100: #e2efe7;
+  --color-forest-200: #c3ddcd;
+  --color-forest-300: #97c2a8;
+  --color-forest-400: #649e7d;
+  --color-forest-500: #44805f;
+  --color-forest-600: #33684c;
+  --color-forest-700: #2a533e;
+  --color-forest-800: #234334;
+  --color-forest-900: #1c362b;
+  --color-forest-950: #11241c;
+
+  /* Warm gold — the accent that closes deals */
+  --color-gold-50: #fbf6ea;
+  --color-gold-100: #f6ebcd;
+  --color-gold-200: #ecd69b;
+  --color-gold-300: #e0bc62;
+  --color-gold-400: #d4a437;
+  --color-gold-500: #c28d24;
+  --color-gold-600: #a5711d;
+  --color-gold-700: #84581c;
+  --color-gold-800: #6d491d;
+  --color-gold-900: #5b3d1c;
+}
+
+/* ============================================================
+   SELECTABLE THEMES — each re-tints the whole app by overriding
+   the forest (chrome/ink) and gold (accent) scales. Applied via
+   data-theme on <html>; "evergreen" is the :root default above.
+   ============================================================ */
+:root {
+  --app-bg: #f5f6f2;
+  --app-bg-dark: #0b120e;
+}
+
+/* 🌹 Rosewood — deep mulberry + rose accent (Holly's favorite) */
+html[data-theme='rosewood'] {
+  --app-bg: #f8f3f2;
+  --app-bg-dark: #170e0e;
+  --color-forest-50: #faf4f4;
+  --color-forest-100: #f4e7e7;
+  --color-forest-200: #e6caca;
+  --color-forest-300: #d0a1a3;
+  --color-forest-400: #b27378;
+  --color-forest-500: #985459;
+  --color-forest-600: #7f4248;
+  --color-forest-700: #67353b;
+  --color-forest-800: #522b30;
+  --color-forest-900: #402227;
+  --color-forest-950: #2c1619;
+  --color-gold-50: #fdf2f4;
+  --color-gold-100: #fbe2e7;
+  --color-gold-200: #f6c2cc;
+  --color-gold-300: #ee94a6;
+  --color-gold-400: #e2627e;
+  --color-gold-500: #d23f62;
+  --color-gold-600: #b42a4e;
+  --color-gold-700: #921f41;
+  --color-gold-800: #771d3a;
+  --color-gold-900: #621c34;
+}
+
+/* 🌾 Delta — espresso brown + harvest wheat, warm cream canvas */
+html[data-theme='delta'] {
+  --app-bg: #f6eedd;
+  --app-bg-dark: #171009;
+  --color-forest-50: #f9f3ec;
+  --color-forest-100: #f1e5d8;
+  --color-forest-200: #e2cdb8;
+  --color-forest-300: #cba888;
+  --color-forest-400: #b07f55;
+  --color-forest-500: #96603c;
+  --color-forest-600: #7d4e31;
+  --color-forest-700: #653f29;
+  --color-forest-800: #4d3020;
+  --color-forest-900: #3a2418;
+  --color-forest-950: #2b1a12;
+  --color-gold-50: #fdf3ea;
+  --color-gold-100: #fae3cd;
+  --color-gold-200: #f4c79c;
+  --color-gold-300: #eba564;
+  --color-gold-400: #df8439;
+  --color-gold-500: #cf6a1f;
+  --color-gold-600: #b25318;
+  --color-gold-700: #8f4117;
+  --color-gold-800: #743618;
+  --color-gold-900: #602e17;
+}
+
+/* 🌊 Gulf — deep ocean teal + coral, airy canvas */
+html[data-theme='gulf'] {
+  --app-bg: #e7f2f5;
+  --app-bg-dark: #081418;
+  --color-forest-50: #f0f7fa;
+  --color-forest-100: #ddebf1;
+  --color-forest-200: #b9d4e0;
+  --color-forest-300: #87b4c6;
+  --color-forest-400: #5592ab;
+  --color-forest-500: #347795;
+  --color-forest-600: #27637e;
+  --color-forest-700: #1e5067;
+  --color-forest-800: #173f52;
+  --color-forest-900: #11303f;
+  --color-forest-950: #0c2430;
+  --color-gold-50: #fdf1ee;
+  --color-gold-100: #fbded7;
+  --color-gold-200: #f6bdaf;
+  --color-gold-300: #ee9480;
+  --color-gold-400: #e36a52;
+  --color-gold-500: #d14e34;
+  --color-gold-600: #b43c27;
+  --color-gold-700: #913022;
+  --color-gold-800: #772b21;
+  --color-gold-900: #63271f;
+}
+
+/* 🌃 Midnight — cool indigo slate + icy teal, crisp canvas */
+html[data-theme='midnight'] {
+  --app-bg: #eef1f8;
+  --app-bg-dark: #0d1019;
+  --color-forest-50: #f4f6fa;
+  --color-forest-100: #e7eaf2;
+  --color-forest-200: #ccd3e2;
+  --color-forest-300: #a3aec8;
+  --color-forest-400: #7787ad;
+  --color-forest-500: #566795;
+  --color-forest-600: #44527e;
+  --color-forest-700: #364166;
+  --color-forest-800: #2a3350;
+  --color-forest-900: #20263d;
+  --color-forest-950: #171c2e;
+  --color-gold-50: #effafa;
+  --color-gold-100: #d7f1f1;
+  --color-gold-200: #ace1e3;
+  --color-gold-300: #79c8cd;
+  --color-gold-400: #4baab2;
+  --color-gold-500: #348e98;
+  --color-gold-600: #2b727d;
+  --color-gold-700: #275d66;
+  --color-gold-800: #254d55;
+  --color-gold-900: #224148;
+}
+
+html {
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  color-scheme: light;
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply text-slate-700 font-sans text-sm;
+  background-color: var(--app-bg);
+  transition: background-color 0.3s ease;
+}
+
+html.dark {
+  color-scheme: dark;
+}
+html.dark body {
+  @apply text-slate-300;
+  background-color: var(--app-bg-dark);
+}
+
+::selection {
+  background: var(--color-forest-200);
+}
+
+/* Clear, consistent keyboard-focus ring for accessibility.
+   Pointer clicks don't trigger :focus-visible, so this only shows
+   for keyboard users and never fights component-level focus styles. */
+:focus-visible {
+  outline: 2px solid var(--color-forest-500);
+  outline-offset: 2px;
+  border-radius: 8px;
+}
+
+/* Soft custom scrollbars */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #d2d9d3 transparent;
+}
+*::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+*::-webkit-scrollbar-thumb {
+  background: #d2d9d3;
+  border-radius: 8px;
+}
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+@keyframes slidein {
+  from { transform: translateY(6px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+.animate-slidein {
+  animation: slidein 0.18s ease-out;
+}
+
+@keyframes fadein {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+.animate-fadein {
+  animation: fadein 0.15s ease-out;
+}
+
+/* Modal panel: gentle scale + rise from center for spatial context */
+@keyframes modalin {
+  from { transform: translateY(8px) scale(0.97); opacity: 0; }
+  to { transform: translateY(0) scale(1); opacity: 1; }
+}
+.animate-modalin {
+  animation: modalin 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes softpulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(42, 83, 62, 0.28); }
+  50% { box-shadow: 0 0 0 5px rgba(42, 83, 62, 0); }
+}
+.animate-softpulse {
+  animation: softpulse 2.4s ease-in-out infinite;
+}
+
+/* time-of-day greeting sky */
+@keyframes sunrise {
+  from { transform: translateY(34px) scale(0.85); opacity: 0; }
+  to { transform: translateY(0) scale(1); opacity: 1; }
+}
+.animate-sunrise {
+  animation: sunrise 1.4s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes floaty {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+.animate-floaty {
+  animation: floaty 7s ease-in-out infinite;
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: 0.2; }
+  50% { opacity: 0.9; }
+}
+.animate-twinkle {
+  animation: twinkle 3.2s ease-in-out infinite;
+}
+
+/* sold-day confetti — falls past the viewport then the layer unmounts */
+@keyframes confetti-fall {
+  0% { transform: translateY(-8vh) rotate(0deg); opacity: 1; }
+  85% { opacity: 1; }
+  100% { transform: translateY(108vh) rotate(720deg); opacity: 0; }
+}
+.animate-confetti {
+  animation: confetti-fall var(--confetti-dur, 2.2s) ease-in var(--confetti-delay, 0s) both;
+}
+
+/* live-link pulse on the financing feed */
+@keyframes livedot {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.35; }
+}
+.animate-livedot {
+  animation: livedot 1.8s ease-in-out infinite;
+}
+
+/* Respect users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
